@@ -44,17 +44,21 @@ A custom-built RC (Resistor-Capacitor) Thermal Model that simulates heat transfe
 
 ### State Estimation (Kalman Filter)
 The system employs a Kalman filter to estimate the true temperature ($x$) by weighing the physics-model prediction against noisy sensor measurements ($z$):
-$$ K_k = \frac{P_{k|k-1} H^T}{H P_{k|k-1} H^T + R} $$
-$$ \hat{x}_k = \hat{x}_{k|k-1} + K_k(z_k - H \hat{x}_{k|k-1}) $$
+
+$$
+K_k = \frac{P_{k|k-1} H^T}{H P_{k|k-1} H^T + R}
+$$
+
+$$
+\hat{x}_k = \hat{x}_{k|k-1} + K_k(z_k - H \hat{x}_{k|k-1})
+$$
 
 ### RC Thermal Model
 The cabin is modeled as a thermodynamic circuit where temperature change is a function of thermal capacitance ($C$) and resistance ($R$):
-$$ T_{next} = T_{curr} + \frac{dt}{C} \times (Q_{ac} + Q_{sun} + Q_{body} - \frac{T_{curr} - T_{amb}}{R}) $$
 
----
-
-## 🎨 Visual Style: Midnight Violet
-ThermoTwin utilizes a **Premium Glassmorphism** aesthetic. The "Midnight Violet" palette ($#a78bfa$ / $#cfbcff$) is combined with high-blur backdrops ($backdrop-blur-2xl$) and radial gradients to create a professional, technical environment that feels like a modern aerospace or automotive telemetry terminal.
+$$
+T_{next} = T_{curr} + \frac{dt}{C} \times \left( Q_{ac} + Q_{sun} + Q_{body} - \frac{T_{curr} - T_{amb}}{R} \right)
+$$
 
 ---
 
